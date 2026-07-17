@@ -28,7 +28,6 @@ export function ProjectsSection() {
         >
           <motion.div variants={fadeInUp}>
             <SectionTitle
-              number="04 //"
               label="Projets"
               description="Applications conçues pour résoudre de vrais problèmes métier, avec des résultats mesurables."
             />

@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Mail, MapPin, Clock, Zap } from 'lucide-react'
+import { Mail, MapPin } from 'lucide-react'
 import { GithubIcon, LinkedinIcon } from '@/components/ui/SocialIcons'
 import { SectionTitle } from '../ui/SectionTitle'
 import { ContactForm } from '@/features/contact/ContactForm'
@@ -31,13 +31,7 @@ const CONTACT_LINKS = [
   {
     icon: MapPin,
     label: 'Localisation',
-    value: 'Antananarivo, Madagascar · Remote OK',
-    href: undefined,
-  },
-  {
-    icon: Clock,
-    label: 'Fuseau horaire',
-    value: 'GMT+3 (EAT) · Flexible',
+    value: 'Antananarivo, Madagascar',
     href: undefined,
   },
 ]
@@ -47,7 +41,7 @@ export function ContactSection() {
   const isInView = useInView(ref, { once: true, amount: 0.04 })
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
+    <section id="contact" className="py-28 relative overflow-hidden">
       {/* Bottom glow */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -67,28 +61,23 @@ export function ContactSection() {
           <motion.div variants={fadeInUp}>
             <SectionTitle
               centered
-              number="07 //"
               label="Contact"
-              description="Disponible pour des missions freelance, du recrutement ou une collaboration. Réponse garantie sous 24h."
+              description="Parlons de votre projet. Échangeons sur vos besoins techniques et vos défis d'architecture."
             />
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
             {/* Info */}
             <motion.div variants={fadeInUp} className="space-y-8">
-              {/* Availability banner */}
-              <div className="flex items-start gap-4 p-4 bg-primary/6 border border-primary/25">
-                <Zap size={18} className="text-primary fill-current shrink-0 mt-0.5" />
-                <div>
-                  <h3 className="font-extrabold text-foreground text-base">
-                    Disponible immédiatement
-                  </h3>
-                  <p className="text-dim text-sm mt-1 leading-relaxed">
-                    Ouvert aux missions freelance, CDD/CDI en remote ou hybride.
-                    <br />
-                    Réponse sous 24h, opérationnel immédiatement.
-                  </p>
-                </div>
+              {/* Intro */}
+              <div className="space-y-4">
+                <h3 className="text-xl font-bold text-foreground">
+                  Discutons de votre projet
+                </h3>
+                <p className="text-dim text-sm leading-relaxed">
+                  Que ce soit pour une mission de développement, un audit technique ou du conseil
+                  en architecture, je suis à l'écoute de vos besoins. Réponse garantie sous 24h.
+                </p>
               </div>
 
               {/* Links */}

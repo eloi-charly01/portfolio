@@ -61,32 +61,19 @@ export function HeroSection() {
       <div className="relative z-10 w-full max-w-5xl mx-auto px-6 pt-24 pb-16">
         <div className="flex flex-col items-center text-center">
 
-          {/* Availability badge */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="mb-8"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/35 clip-cyber text-primary text-xs font-bold tracking-[0.2em] uppercase">
-              <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
-              {PERSONAL_INFO.availability}
-            </div>
-          </motion.div>
-
           {/* Name */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-            className="mb-5"
+            className="mb-6"
           >
-            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[7rem] font-extrabold tracking-tighter uppercase leading-none">
+            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] font-extrabold tracking-tighter uppercase leading-none">
               <span className="text-foreground">ELOI </span>
               <span
                 className="text-primary"
                 style={{
-                  textShadow: '0 0 30px rgba(255,45,85,0.55), 0 0 60px rgba(255,45,85,0.25)',
+                  textShadow: '0 0 35px rgba(255,45,85,0.6), 0 0 70px rgba(255,45,85,0.3)',
                 }}
               >
                 CHARLY
@@ -101,11 +88,11 @@ export function HeroSection() {
             animate={{ opacity: 1, scaleX: 1 }}
             transition={{ duration: 0.65, delay: 0.65 }}
           >
-            <div className="h-px w-12 sm:w-24 bg-gradient-to-r from-transparent to-primary/50" />
+            <div className="h-px w-12 sm:w-24 bg-linear-to-r from-transparent to-primary/50" />
             <span className="text-xs sm:text-sm font-bold tracking-[0.28em] uppercase text-dim whitespace-nowrap">
               Développeur Full Stack
             </span>
-            <div className="h-px w-12 sm:w-24 bg-gradient-to-l from-transparent to-primary/50" />
+            <div className="h-px w-12 sm:w-24 bg-linear-to-l from-transparent to-primary/50" />
           </motion.div>
 
           {/* Typewriter subtitle */}

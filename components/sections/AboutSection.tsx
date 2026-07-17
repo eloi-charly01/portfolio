@@ -10,34 +10,33 @@ import { staggerContainer, fadeInUp } from '@/lib/animations'
 const HIGHLIGHTS = [
   {
     number: '01',
-    title: 'Architecture technique solide',
+    title: 'Architecture & Performance',
     description:
-      "Conception de systèmes scalables avec API Platform, DDD et CQRS. Modélisation BDD relationnelle MySQL avancée avec focus sur la performance.",
+      "Conception de systèmes scalables avec API Platform, DDD et patterns modernes. Optimisation SQL avancée pour des performances maximales.",
   },
   {
     number: '02',
-    title: 'Impact business mesurable',
+    title: 'Impact mesurable',
     description:
-      "-70% de traitement manuel, -50% temps de rapprochement, -40% d'intégration. Des résultats chiffrés prouvés sur chaque mission.",
+      "Réductions de 40 à 70% des temps de traitement sur chaque mission. Des résultats concrets, chiffrés et vérifiables.",
   },
   {
     number: '03',
-    title: 'Qualité & bonnes pratiques',
+    title: 'Excellence technique',
     description:
-      "Clean code, principes SOLID, tests unitaires PHPUnit, code reviews systématiques. La qualité n'est pas optionnelle.",
+      "Clean Architecture, principes SOLID, tests automatisés. Code maintenable et évolutif comme standard, pas comme option.",
   },
   {
     number: '04',
-    title: 'Autonomie & collaboration',
+    title: 'Expertise Full Stack',
     description:
-      "4+ ans en télétravail, Agile/Scrum, communication claire. Opérationnel immédiatement, disponible pour des missions remote.",
+      "De la modélisation BDD aux interfaces React/Next.js. Vision complète de la stack pour des solutions cohérentes.",
   },
 ]
 
 const INFO_CARDS = [
   { icon: MapPin, label: 'Localisation', value: 'Antananarivo, Madagascar' },
-  { icon: Clock, label: 'Disponibilité', value: 'Immédiate · Télétravail' },
-  { icon: Globe, label: 'Langues', value: 'Français · Anglais B1 · Malgache' },
+  { icon: Globe, label: 'Langues', value: 'Français · Anglais · Malgache' },
   { icon: Award, label: 'Formation', value: 'Master 2 · CNTEMAD 2024' },
 ]
 
@@ -46,7 +45,7 @@ export function AboutSection() {
   const isInView = useInView(ref, { once: true, amount: 0.08 })
 
   return (
-    <section id="about" className="py-24 relative">
+    <section id="about" className="py-28 relative">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           ref={ref}
@@ -56,7 +55,6 @@ export function AboutSection() {
         >
           <motion.div variants={fadeInUp}>
             <SectionTitle
-              number="01 //"
               label="À propos"
               description="Architecte de solutions web robustes, passionné par le clean code et les architectures scalables."
             />
@@ -67,29 +65,25 @@ export function AboutSection() {
             <motion.div variants={fadeInUp} className="space-y-6">
               <div className="space-y-4 text-dim leading-relaxed">
                 <p>
-                  Développeur PHP Full Stack depuis{' '}
-                  <strong className="text-foreground font-bold">plus de 4 ans</strong>, je me
-                  spécialise dans la conception et le développement d'applications web métier
-                  robustes avec{' '}
-                  <strong className="text-primary font-bold">Symfony</strong> et{' '}
-                  <strong className="text-primary font-bold">Laravel</strong>, ainsi que dans les
-                  interfaces modernes avec{' '}
-                  <strong className="text-primary font-bold">React / Next.js</strong>.
+                  Développeur Full Stack depuis{' '}
+                  <strong className="text-foreground font-bold">plus de 4 ans</strong>, spécialisé
+                  dans la conception d'applications métier critiques avec{' '}
+                  <strong className="text-primary font-bold">Symfony</strong>,{' '}
+                  <strong className="text-primary font-bold">Laravel</strong> et{' '}
+                  <strong className="text-primary font-bold">API Platform</strong>.
                 </p>
                 <p>
-                  Mon approche est centrée sur l'
-                  <strong className="text-foreground font-bold">impact business mesurable</strong>{' '}
-                  : chaque projet est une opportunité d'apporter de la valeur concrète — réduction
-                  des temps de traitement, automatisation des workflows critiques, optimisation des
-                  performances SQL.
+                  Mon expertise couvre l'ensemble de la chaîne de valeur : de l'architecture backend
+                  et la modélisation de bases de données complexes, jusqu'aux interfaces modernes avec{' '}
+                  <strong className="text-primary font-bold">React / Next.js</strong>. Chaque
+                  ligne de code est pensée pour la maintenabilité et la performance.
                 </p>
                 <p>
-                  Adepte du{' '}
-                  <strong className="text-foreground font-bold">clean code</strong> et des
-                  principes{' '}
-                  <strong className="text-primary font-bold">SOLID</strong>, je travaille en
-                  environnement Agile et suis pleinement opérationnel en contexte de télétravail
-                  international.
+                  Adepte des principes{' '}
+                  <strong className="text-primary font-bold">SOLID</strong> et du{' '}
+                  <strong className="text-foreground font-bold">Clean Code</strong>, je privilégie
+                  les architectures robustes et évolutives. Résultats mesurables : réductions de 40 à
+                  70% des temps de traitement sur mes projets récents.
                 </p>
               </div>
 

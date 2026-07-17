@@ -17,7 +17,7 @@ export function SkillsSection() {
   const activeCategory = SKILL_CATEGORIES.find((c) => c.id === activeId)!
 
   return (
-    <section id="skills" className="py-24 relative">
+    <section id="skills" className="py-28 relative">
       <div className="absolute inset-0 grid-bg opacity-50" />
 
       <div className="relative max-w-7xl mx-auto px-6">
@@ -29,9 +29,8 @@ export function SkillsSection() {
         >
           <motion.div variants={fadeInUp}>
             <SectionTitle
-              number="02 //"
               label="Compétences"
-              description="15+ technologies maîtrisées, organisées par domaine d'expertise."
+              description="Technologies et pratiques au cœur de mon expertise quotidienne."
             />
           </motion.div>
 
@@ -57,7 +56,7 @@ export function SkillsSection() {
           <AnimatePresence mode="wait">
             <motion.div
               key={activeId}
-              className="grid sm:grid-cols-2 gap-x-12 gap-y-5 mb-14"
+              className="grid sm:grid-cols-2 gap-x-12 gap-y-5"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
@@ -74,23 +73,6 @@ export function SkillsSection() {
               ))}
             </motion.div>
           </AnimatePresence>
-
-          {/* All tech badges overview */}
-          <motion.div variants={fadeInUp}>
-            <p className="text-xs text-ghost uppercase tracking-[0.3em] mb-4 font-mono">
-              Toutes les technologies
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {SKILL_CATEGORIES.flatMap((c) => c.skills.map((s) => ({ ...s, cid: c.id }))).map(({ name, cid }) => (
-                <span
-                  key={`${cid}-${name}`}
-                  className="px-3 py-1 text-xs font-medium bg-surface border border-wire text-dim hover:border-primary/40 hover:text-primary transition-colors"
-                >
-                  {name}
-                </span>
-              ))}
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>

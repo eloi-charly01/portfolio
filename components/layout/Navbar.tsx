@@ -32,7 +32,7 @@ export function Navbar() {
           if (entry.isIntersecting) setActiveSection(entry.target.id)
         })
       },
-      { threshold: 0.25, rootMargin: '-80px 0px -75% 0px' }
+      { threshold: 0.15, rootMargin: '-20% 0px -60% 0px' }
     )
     document.querySelectorAll('section[id]').forEach((s) => observer.observe(s))
     return () => observer.disconnect()
@@ -87,10 +87,9 @@ export function Navbar() {
           {/* CTA */}
           <a
             href="#contact"
-            className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold tracking-widest uppercase text-primary border border-primary/40 hover:bg-primary/8 hover:border-primary transition-all clip-cyber"
+            className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold tracking-widest uppercase text-primary border border-primary/40 hover:bg-primary/10 hover:border-primary transition-all duration-300 clip-cyber"
           >
-            <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
-            Disponible
+            Me contacter
           </a>
 
           {/* Mobile toggle */}

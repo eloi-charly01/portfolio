@@ -34,7 +34,6 @@ export function ServicesSection() {
           <motion.div variants={fadeInUp}>
             <SectionTitle
               centered
-              number="05 //"
               label="Services"
               description="Ce que je peux faire pour vous, en freelance ou en mission longue durée."
             />

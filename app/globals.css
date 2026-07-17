@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* ─── Design System: Cyberpunk Portfolio ─── */
+/* ─── Design System: Premium Portfolio ─── */
 @theme inline {
   /* Background & surface hierarchy */
   --color-background: #0a0a0f;
@@ -8,66 +8,119 @@
   --color-surface:    #0f0f1a;
   --color-panel:      #13131f;
 
-  /* Brand accent */
+  /* Brand accent - refined red */
   --color-primary:    #ff2d55;
 
   /* Border & text shades */
   --color-wire:       #1a1a2e;
-  --color-dim:        #8b8b9a;
-  --color-ghost:      #5a5a6a;
+  --color-dim:        #a0a0b0;
+  --color-ghost:      #6a6a7a;
 
   /* Typography */
-  --font-sans: var(--font-be-vietnam-pro), "Be Vietnam Pro", roboto, "Roboto Fallback", sans-serif;
-  --font-mono: var(--font-geist-mono), monospace;
+  --font-sans: var(--font-be-vietnam-pro), "Be Vietnam Pro", system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), "SF Mono", "Monaco", "Cascadia Code", monospace;
 }
 
 /* ─── Custom utilities ─── */
 @utility glow-red {
-  box-shadow: 0 0 15px rgba(255, 45, 85, 0.55), 0 0 30px rgba(255, 45, 85, 0.22);
+  box-shadow: 0 0 20px rgba(255, 45, 85, 0.6), 0 0 40px rgba(255, 45, 85, 0.3);
 }
 
 @utility glow-red-sm {
-  box-shadow: 0 0 8px rgba(255, 45, 85, 0.45);
+  box-shadow: 0 0 12px rgba(255, 45, 85, 0.5);
 }
 
 @utility clip-cyber {
-  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
 }
 
 @utility clip-cyber-lg {
-  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
 }
 
 @utility grid-bg {
   background-image:
-    linear-gradient(rgba(255, 45, 85, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 45, 85, 0.035) 1px, transparent 1px);
-  background-size: 50px 50px;
+    linear-gradient(rgba(255, 45, 85, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 45, 85, 0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
 }
 
 /* ─── Base styles ─── */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {
   background-color: #0a0a0f;
   color: #ffffff;
   font-family: var(--font-sans);
-  line-height: 1.58;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em;
 }
 
 /* Selection */
 ::selection {
-  background: rgba(255, 45, 85, 0.28);
+  background: rgba(255, 45, 85, 0.25);
   color: #ffffff;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar            { width: 4px; }
+/* Custom scrollbar - premium style */
+::-webkit-scrollbar            { width: 6px; }
 ::-webkit-scrollbar-track      { background: #0a0a0f; }
-::-webkit-scrollbar-thumb      { background: #ff2d55; border-radius: 2px; }
-::-webkit-scrollbar-thumb:hover { background: #ff4d6d; }
+::-webkit-scrollbar-thumb      { 
+  background: linear-gradient(180deg, #ff2d55 0%, #ff4d6d 100%);
+  border-radius: 3px;
+  transition: background 0.3s ease;
+}
+::-webkit-scrollbar-thumb:hover { 
+  background: linear-gradient(180deg, #ff4d6d 0%, #ff6d85 100%);
+}
+
+/* Smooth transitions for interactive elements */
+a, button {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced focus styles */
+:focus-visible {
+  outline: 2px solid rgba(255, 45, 85, 0.6);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Typography enhancements */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+/* Smooth image loading */
+img {
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* Premium backdrop blur for modals/overlays */
+.backdrop-premium {
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+}
+
+/* Animate in on scroll */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
 

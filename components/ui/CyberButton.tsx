@@ -32,15 +32,15 @@ export function CyberButton({
 
   const variants = {
     primary:
-      'bg-primary text-white border border-primary hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(255,45,85,0.45)]',
+      'bg-primary text-white border border-primary hover:bg-primary/90 hover:shadow-[0_0_25px_rgba(255,45,85,0.5)]',
     outline:
-      'bg-transparent text-primary border border-primary hover:bg-primary/8 hover:shadow-[0_0_12px_rgba(255,45,85,0.25)]',
+      'bg-transparent text-primary border border-primary hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(255,45,85,0.3)]',
     ghost:
       'bg-transparent text-dim border border-wire hover:border-primary/50 hover:text-primary',
   }
 
   const base = cn(
-    'relative inline-flex items-center justify-center gap-2 font-bold tracking-widest uppercase transition-all duration-200 clip-cyber',
+    'relative inline-flex items-center justify-center gap-2 font-bold tracking-widest uppercase transition-all duration-300 ease-out clip-cyber',
     sizes[size],
     variants[variant],
     disabled && 'opacity-50 pointer-events-none',
@@ -48,9 +48,9 @@ export function CyberButton({
   )
 
   const motionProps = {
-    whileHover: { scale: 1.02 },
-    whileTap: { scale: 0.97 },
-    transition: { duration: 0.15 },
+    whileHover: { scale: 1.03, y: -2 },
+    whileTap: { scale: 0.98 },
+    transition: { duration: 0.2, ease: [0.4, 0, 0.2, 1] },
   }
 
   if (href) {

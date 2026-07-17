@@ -24,7 +24,6 @@ export function ExperienceSection() {
         >
           <motion.div variants={fadeInUp}>
             <SectionTitle
-              number="03 //"
               label="Expériences"
               description="5 missions professionnelles, des résultats mesurables à chaque étape."
             />
@@ -33,7 +32,7 @@ export function ExperienceSection() {
           {/* Timeline */}
           <div className="relative">
             {/* Vertical line */}
-            <div className="absolute left-3 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary/60 via-primary/20 to-transparent md:-translate-x-1/2" />
+            <div className="absolute left-3 md:left-1/2 top-0 bottom-0 w-px bg-linear-to-b from-primary/60 via-primary/20 to-transparent md:-translate-x-1/2" />
 
             <div className="space-y-10">
               {EXPERIENCES.map((exp, index) => {

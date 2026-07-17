@@ -46,7 +46,6 @@ export function EducationSection() {
         >
           <motion.div variants={fadeInUp}>
             <SectionTitle
-              number="06 //"
               label="Formation"
               description="Formation académique solide et veille technologique continue."
             />

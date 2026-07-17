@@ -24,26 +24,26 @@ export function ProgressBar({ label, value, showLevel = true, className, delay =
   const isInView = useInView(ref, { once: true, amount: 0.5 })
 
   return (
-    <div ref={ref} className={cn('space-y-1.5', className)}>
+    <div ref={ref} className={cn('space-y-2', className)}>
       <div className="flex justify-between items-center">
-        <span className="text-sm font-medium text-foreground">{label}</span>
+        <span className="text-sm font-semibold text-foreground">{label}</span>
         {showLevel && (
-          <span className="text-xs font-bold text-primary font-mono">{levelLabel(value)}</span>
+          <span className="text-xs font-bold text-primary font-mono tracking-wide">{levelLabel(value)}</span>
         )}
       </div>
-      <div className="relative h-1 bg-wire overflow-hidden">
+      <div className="relative h-1.5 bg-wire overflow-hidden rounded-sm">
         <motion.div
-          className="absolute inset-y-0 left-0 bg-primary"
+          className="absolute inset-y-0 left-0 bg-primary shadow-[0_0_8px_rgba(255,45,85,0.6)]"
           initial={{ width: 0 }}
           animate={isInView ? { width: `${value}%` } : { width: 0 }}
-          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1], delay }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay }}
         />
         {/* Shimmer */}
         <motion.div
-          className="absolute inset-y-0 w-10 bg-gradient-to-r from-transparent via-white/30 to-transparent"
-          initial={{ left: '-2.5rem' }}
-          animate={isInView ? { left: `calc(${value}% - 1rem)` } : { left: '-2.5rem' }}
-          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1], delay }}
+          className="absolute inset-y-0 w-12 bg-linear-to-r from-transparent via-white/40 to-transparent"
+          initial={{ left: '-3rem' }}
+          animate={isInView ? { left: `calc(${value}% - 1.5rem)` } : { left: '-3rem' }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay }}
         />
       </div>
     </div>
