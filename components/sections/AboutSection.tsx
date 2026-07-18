@@ -1,11 +1,8 @@
 'use client'
 
-import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
 import { MapPin, Clock, Globe, Award } from 'lucide-react'
 import { SectionTitle } from '../ui/SectionTitle'
 import { CyberCard } from '../ui/CyberCard'
-import { staggerContainer, fadeInUp } from '@/lib/animations'
 
 const HIGHLIGHTS = [
   {
@@ -41,28 +38,19 @@ const INFO_CARDS = [
 ]
 
 export function AboutSection() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.08 })
-
   return (
     <section id="about" className="py-28 relative">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          ref={ref}
-          variants={staggerContainer}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-        >
-          <motion.div variants={fadeInUp}>
-            <SectionTitle
-              label="À propos"
-              description="Architecte de solutions web robustes, passionné par le clean code et les architectures scalables."
-            />
-          </motion.div>
+        <div className="animate-fade-in-up">
+          <SectionTitle
+            label="À propos"
+            description="Architecte de solutions web robustes, passionné par le clean code et les architectures scalables."
+          />
+        </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* Bio */}
-            <motion.div variants={fadeInUp} className="space-y-6">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          {/* Bio */}
+          <div className="space-y-6 animate-fade-in-up" style={{ animationDelay: '100ms' }}>
               <div className="space-y-4 text-dim leading-relaxed">
                 <p>
                   Développeur Full Stack depuis{' '}
@@ -104,10 +92,10 @@ export function AboutSection() {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
 
             {/* Highlights */}
-            <motion.div variants={fadeInUp} className="space-y-4">
+            <div className="space-y-4 animate-fade-in-up" style={{ animationDelay: '200ms' }}>
               <p className="text-xs font-bold text-primary uppercase tracking-[0.3em] mb-6">
                 Ce que j'apporte
               </p>
@@ -122,9 +110,8 @@ export function AboutSection() {
                   </div>
                 </CyberCard>
               ))}
-            </motion.div>
+            </div>
           </div>
-        </motion.div>
       </div>
     </section>
   )

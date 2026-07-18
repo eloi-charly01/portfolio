@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Zap } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -32,7 +31,7 @@ export function Navbar() {
           if (entry.isIntersecting) setActiveSection(entry.target.id)
         })
       },
-      { threshold: 0.15, rootMargin: '-20% 0px -60% 0px' }
+      { threshold: 0.1, rootMargin: '-10% 0px -50% 0px' }
     )
     document.querySelectorAll('section[id]').forEach((s) => observer.observe(s))
     return () => observer.disconnect()
@@ -46,23 +45,20 @@ export function Navbar() {
 
   return (
     <>
-      <motion.header
+      <header
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
           scrolled
-            ? 'bg-background/90 backdrop-blur-md border-b border-wire'
+            ? 'bg-background/95 border-b border-wire'
             : 'bg-transparent'
         )}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
       >
         <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-2 group shrink-0">
-            <Zap size={16} className="text-primary fill-current" />
+          <a href="#home" className="flex items-center gap-2 group shrink-0" aria-label="Retour à l'accueil">
+            <Zap size={16} className="text-primary fill-current" aria-hidden="true" />
             <span className="font-extrabold tracking-widest uppercase text-sm">
-              ELOI<span className="text-primary">.</span>DEV
+              ELOI<span className="text-primary">.</span>CHARLY
             </span>
           </a>
 
@@ -72,6 +68,7 @@ export function Navbar() {
               <a
                 key={href}
                 href={href}
+                aria-current={activeSection === href.slice(1) ? 'page' : undefined}
                 className={cn(
                   'text-xs font-semibold tracking-widest uppercase transition-colors duration-200',
                   activeSection === href.slice(1)
@@ -96,55 +93,48 @@ export function Navbar() {
           <button
             className="md:hidden text-dim hover:text-primary transition-colors"
             onClick={() => setMenuOpen((o) => !o)}
-            aria-label="Toggle menu"
+            aria-label={menuOpen ? "Fermer le menu de navigation" : "Ouvrir le menu de navigation"}
+            aria-expanded={menuOpen}
           >
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </nav>
-      </motion.header>
+      </header>
 
       {/* Mobile fullscreen menu */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            className="fixed inset-0 z-40 bg-background/97 backdrop-blur-xl flex flex-col items-center justify-center gap-10"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-          >
-            {/* Corner decorations */}
-            <div className="absolute top-0 left-0 w-24 h-24 border-l-2 border-t-2 border-primary/20" />
-            <div className="absolute bottom-0 right-0 w-24 h-24 border-r-2 border-b-2 border-primary/20" />
+      {menuOpen && (
+        <div
+          className={cn(
+            'fixed inset-0 z-40 bg-background/97 backdrop-blur-xl flex flex-col items-center justify-center gap-10',
+            'animate-fade-in'
+          )}
+        >
+          {/* Corner decorations */}
+          <div className="absolute top-0 left-0 w-24 h-24 border-l-2 border-t-2 border-primary/20" />
+          <div className="absolute bottom-0 right-0 w-24 h-24 border-r-2 border-b-2 border-primary/20" />
 
-            {NAV_LINKS.map(({ href, label }, i) => (
-              <motion.a
-                key={href}
-                href={href}
-                onClick={() => setMenuOpen(false)}
-                className="text-2xl font-extrabold tracking-wider uppercase text-dim hover:text-primary transition-colors"
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 12 }}
-                transition={{ delay: i * 0.06, duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              >
-                {label}
-              </motion.a>
-            ))}
-
-            <motion.a
-              href="#contact"
+          {NAV_LINKS.map(({ href, label }, i) => (
+            <a
+              key={href}
+              href={href}
               onClick={() => setMenuOpen(false)}
-              className="mt-4 px-8 py-4 text-sm font-bold tracking-widest uppercase bg-primary text-white clip-cyber"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: NAV_LINKS.length * 0.06, duration: 0.35 }}
+              className="text-2xl font-extrabold tracking-wider uppercase text-dim hover:text-primary transition-colors animate-fade-in-up"
+              style={{ animationDelay: `${i * 60}ms` }}
             >
-              Me contacter
-            </motion.a>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              {label}
+            </a>
+          ))}
+
+          <a
+            href="#contact"
+            onClick={() => setMenuOpen(false)}
+            className="mt-4 px-8 py-4 text-sm font-bold tracking-widest uppercase bg-primary text-white clip-cyber animate-fade-in-up"
+            style={{ animationDelay: `${NAV_LINKS.length * 60}ms` }}
+          >
+            Me contacter
+          </a>
+        </div>
+      )}
     </>
   )
 }

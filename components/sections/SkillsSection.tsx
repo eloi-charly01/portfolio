@@ -1,18 +1,13 @@
 'use client'
 
 import { useState } from 'react'
-import { motion, useInView, AnimatePresence } from 'framer-motion'
-import { useRef } from 'react'
 import { SectionTitle } from '../ui/SectionTitle'
 import { ProgressBar } from '../ui/ProgressBar'
 import { SKILL_CATEGORIES } from '@/constants/data'
-import { staggerContainer, fadeInUp } from '@/lib/animations'
 import { cn } from '@/lib/utils'
 
 export function SkillsSection() {
   const [activeId, setActiveId] = useState('backend')
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.05 })
 
   const activeCategory = SKILL_CATEGORIES.find((c) => c.id === activeId)!
 
@@ -21,21 +16,15 @@ export function SkillsSection() {
       <div className="absolute inset-0 grid-bg opacity-50" />
 
       <div className="relative max-w-7xl mx-auto px-6">
-        <motion.div
-          ref={ref}
-          variants={staggerContainer}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-        >
-          <motion.div variants={fadeInUp}>
-            <SectionTitle
-              label="Compétences"
-              description="Technologies et pratiques au cœur de mon expertise quotidienne."
-            />
-          </motion.div>
+        <div className="animate-fade-in-up">
+          <SectionTitle
+            label="Compétences"
+            description="Technologies et pratiques au cœur de mon expertise quotidienne."
+          />
+        </div>
 
-          {/* Category tabs */}
-          <motion.div variants={fadeInUp} className="flex flex-wrap gap-2 mb-10">
+        {/* Category tabs */}
+        <div className="flex flex-wrap gap-2 mb-10 animate-fade-in-up" style={{ animationDelay: '100ms' }}>
             {SKILL_CATEGORIES.map(({ id, label }) => (
               <button
                 key={id}
@@ -50,18 +39,13 @@ export function SkillsSection() {
                 {label}
               </button>
             ))}
-          </motion.div>
+        </div>
 
-          {/* Skills grid — animated key change */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeId}
-              className="grid sm:grid-cols-2 gap-x-12 gap-y-5"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3 }}
-            >
+        {/* Skills grid — animated key change */}
+        <div
+          key={activeId}
+          className="grid sm:grid-cols-2 gap-x-12 gap-y-5 animate-fade-in"
+        >
               {activeCategory.skills.map(({ name, level }, i) => (
                 <ProgressBar
                   key={name}
@@ -71,10 +55,8 @@ export function SkillsSection() {
                   delay={i * 0.08}
                 />
               ))}
-            </motion.div>
-          </AnimatePresence>
-        </motion.div>
+        </div>
       </div>
-    </section>
+    </section>  
   )
 }

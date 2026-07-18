@@ -11,10 +11,10 @@
   /* Brand accent - refined red */
   --color-primary:    #ff2d55;
 
-  /* Border & text shades */
+  /* Border & text shades - improved contrast for accessibility */
   --color-wire:       #1a1a2e;
-  --color-dim:        #a0a0b0;
-  --color-ghost:      #6a6a7a;
+  --color-dim:        #b8b8c8;
+  --color-ghost:      #8a8a9a;
 
   /* Typography */
   --font-sans: var(--font-be-vietnam-pro), "Be Vietnam Pro", system-ui, -apple-system, sans-serif;
@@ -97,7 +97,43 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
+/* Performance optimizations */
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+
 /* Smooth image loading */
+img {
+  content-visibility: auto;
+}
+
+/* GPU acceleration for animations - limit to essential transforms */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+/* Disable expensive filters and effects for better performance */
+* {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 img {
   image-rendering: -webkit-optimize-contrast;
 }
@@ -123,4 +159,63 @@ img {
 .animate-fadeInUp {
   animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
+
+/* ─── Performance-Optimized CSS Animations (no JS) ─── */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(7px); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 1.6s ease-in-out infinite;
+}
+
+/* Animation delay utilities */
+.animation-delay-100 { animation-delay: 100ms; }
+.animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-300 { animation-delay: 300ms; }
+
+/* Progress bar animations */
+@keyframes progress-fill {
+  from { width: 0; }
+  to { width: var(--progress-width, 0%); }
+}
+
+@keyframes progress-shimmer {
+  from { left: -3rem; }
+  to { left: var(--shimmer-end, 0); }
+}
+
+.animate-progress-fill {
+  animation: progress-fill 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-progress-shimmer {
+  animation: progress-shimmer 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.animation-delay-400 { animation-delay: 400ms; }
 

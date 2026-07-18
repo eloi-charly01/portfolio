@@ -1,12 +1,9 @@
 'use client'
 
-import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
 import { GraduationCap, BookOpen, Code2, Server } from 'lucide-react'
 import { SectionTitle } from '../ui/SectionTitle'
 import { CyberCard } from '../ui/CyberCard'
 import { EDUCATION } from '@/constants/data'
-import { staggerContainer, fadeInUp } from '@/lib/animations'
 
 const SELF_LEARNING = [
   {
@@ -32,28 +29,19 @@ const SELF_LEARNING = [
 ]
 
 export function EducationSection() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.08 })
-
   return (
     <section id="education" className="py-24 relative bg-surface/15">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          ref={ref}
-          variants={staggerContainer}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-        >
-          <motion.div variants={fadeInUp}>
-            <SectionTitle
-              label="Formation"
-              description="Formation académique solide et veille technologique continue."
-            />
-          </motion.div>
+        <div className="animate-fade-in-up">
+          <SectionTitle
+            label="Formation"
+            description="Formation académique solide et veille technologique continue."
+          />
+        </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Academic */}
-            <motion.div variants={fadeInUp}>
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* Academic */}
+          <div className="animate-fade-in-up" style={{ animationDelay: '100ms' }}>
               <p className="flex items-center gap-2 text-xs font-bold text-primary uppercase tracking-[0.28em] mb-6">
                 <GraduationCap size={14} />
                 Formation académique
@@ -83,10 +71,10 @@ export function EducationSection() {
                   </div>
                 </div>
               </CyberCard>
-            </motion.div>
+            </div>
 
             {/* Self-learning */}
-            <motion.div variants={fadeInUp}>
+            <div className="animate-fade-in-up" style={{ animationDelay: '200ms' }}>
               <p className="flex items-center gap-2 text-xs font-bold text-primary uppercase tracking-[0.28em] mb-6">
                 <BookOpen size={14} />
                 Veille & Auto-formation
@@ -113,9 +101,8 @@ export function EducationSection() {
                   architectures modernes et l'approche API-first.
                 </p>
               </div>
-            </motion.div>
+            </div>
           </div>
-        </motion.div>
       </div>
     </section>
   )

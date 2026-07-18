@@ -7,12 +7,16 @@ const beVietnamPro = Be_Vietnam_Pro({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
+  preload: true,
+  adjustFontFallback: true,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
   display: "swap",
+  preload: true,
+  adjustFontFallback: true,
 });
 
 export const metadata: Metadata = {
@@ -52,6 +56,12 @@ export const metadata: Metadata = {
       "Développeur PHP Full Stack avec 4+ ans d'expérience. Symfony, Laravel, API Platform, Next.js.",
   },
   robots: { index: true, follow: true },
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 const jsonLd = {

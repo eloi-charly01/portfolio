@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
 interface CyberButtonProps {
@@ -40,44 +39,36 @@ export function CyberButton({
   }
 
   const base = cn(
-    'relative inline-flex items-center justify-center gap-2 font-bold tracking-widest uppercase transition-all duration-300 ease-out clip-cyber',
+    'relative inline-flex items-center justify-center gap-2 font-bold tracking-widest uppercase transition-all duration-300 ease-out clip-cyber hover:scale-[1.02] active:scale-[0.98]',
     sizes[size],
     variants[variant],
     disabled && 'opacity-50 pointer-events-none',
     className
   )
 
-  const motionProps = {
-    whileHover: { scale: 1.03, y: -2 },
-    whileTap: { scale: 0.98 },
-    transition: { duration: 0.2, ease: [0.4, 0, 0.2, 1] },
-  }
-
   if (href) {
     const isExternal = href.startsWith('http')
     return (
-      <motion.a
+      <a
         href={href}
         target={isExternal ? '_blank' : undefined}
         rel={isExternal ? 'noopener noreferrer' : undefined}
         className={base}
-        {...motionProps}
       >
         {children}
-      </motion.a>
+      </a>
     )
   }
 
   return (
-    <motion.button
+    <button
       type={type}
       onClick={onClick}
       className={base}
       disabled={disabled}
-      {...motionProps}
     >
       {children}
-    </motion.button>
+    </button>
   )
 }
 

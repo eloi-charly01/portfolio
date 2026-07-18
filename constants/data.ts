@@ -124,7 +124,7 @@ export const EXPERIENCES: Experience[] = [
       { metric: '-35%', label: 'Erreurs de saisie grâce à la validation en temps réel' },
       { metric: '-60%', label: 'Temps de reporting manuel via export automatisé' },
     ],
-    technologies: ['PHP', 'MySQL', 'JavaScript', 'HTML/CSS', 'Bootstrap'],
+    technologies: ['PHP', 'Symfony', 'Webpack', 'MySQL', 'JavaScript', 'HTML/CSS', 'Bootstrap'],
     responsibilities: [
       "Développement d'une interface de saisie avec validation en temps réel des données postales",
       "Conception et développement d'un tableau de bord analytique de suivi des stocks et coûts",
@@ -149,6 +149,8 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     id: 'frontend',
     label: 'Frontend',
     skills: [
+      { name: 'HTML & CSS', level: 85 },
+      { name: 'JavaScript', level: 85 },
       { name: 'React / Next.js', level: 85 },
       { name: 'TypeScript', level: 82 },
       { name: 'TailwindCSS', level: 88 },
@@ -158,7 +160,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     id: 'databases',
     label: 'Bases de données',
     skills: [
-      { name: 'MySQL / PostgreSQL', level: 92 },
+      { name: 'MySQL / PostgreSQL / SQLite / MongoDB', level: 80 },
       { name: 'Optimisation & Indexation', level: 90 },
       { name: 'Modélisation relationnelle', level: 95 },
     ],

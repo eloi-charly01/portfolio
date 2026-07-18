@@ -1,49 +1,34 @@
 'use client'
 
-import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { GithubIcon } from '@/components/ui/SocialIcons'
 import Link from 'next/link'
 import { SectionTitle } from '../ui/SectionTitle'
 import { Badge } from '../ui/Badge'
 import { PROJECTS } from '@/constants/data'
-import { staggerContainer, staggerFast, fadeInUp, scaleIn } from '@/lib/animations'
 
 export function ProjectsSection() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.04 })
-
   const featured = PROJECTS.filter((p) => p.featured)
   const others = PROJECTS.filter((p) => !p.featured)
 
   return (
     <section id="projects" className="py-24 relative">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          ref={ref}
-          variants={staggerContainer}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-        >
-          <motion.div variants={fadeInUp}>
-            <SectionTitle
-              label="Projets"
-              description="Applications conçues pour résoudre de vrais problèmes métier, avec des résultats mesurables."
-            />
-          </motion.div>
+        <div className="animate-fade-in-up">
+          <SectionTitle
+            label="Projets"
+            description="Applications conçues pour résoudre de vrais problèmes métier, avec des résultats mesurables."
+          />
+        </div>
 
-          {/* Featured grid */}
-          <motion.div
-            variants={staggerFast}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-6"
-          >
-            {featured.map((project) => (
-              <motion.div
-                key={project.id}
-                variants={scaleIn}
-                className="group flex flex-col bg-surface border border-wire clip-cyber hover:border-primary/40 transition-all duration-300"
-              >
+        {/* Featured grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-6">
+          {featured.map((project, index) => (
+            <div
+              key={project.id}
+              className="group flex flex-col bg-surface border border-wire clip-cyber hover:border-primary/40 transition-all duration-300 animate-fade-in-up"
+              style={{ animationDelay: `${(index + 1) * 100}ms` }}
+            >
                 {/* Card image area */}
                 <div className="relative h-40 bg-panel border-b border-wire overflow-hidden flex items-center justify-center">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/8 to-transparent" />
@@ -121,12 +106,12 @@ export function ProjectsSection() {
                     )}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
 
           {/* Other projects */}
-          <motion.div variants={fadeInUp} className="grid sm:grid-cols-2 gap-4">
+          <div className="grid sm:grid-cols-2 gap-4 animate-fade-in-up" style={{ animationDelay: '400ms' }}>
             {others.map((project) => (
               <div
                 key={project.id}
@@ -158,8 +143,7 @@ export function ProjectsSection() {
                 )}
               </div>
             ))}
-          </motion.div>
-        </motion.div>
+          </div>
       </div>
     </section>
   )

@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
 interface SectionTitleProps {
@@ -19,15 +18,11 @@ export function SectionTitle({
   return (
     <div className={cn('mb-20', centered && 'text-center', className)}>
       <div className={cn('flex items-center gap-5', centered && 'justify-center')}>
-        <motion.h2
-          className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight uppercase leading-none"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        <h2
+          className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight uppercase leading-none animate-fade-in-up"
         >
           {label}
-        </motion.h2>
+        </h2>
         {!centered && (
           <div className="flex-1 h-px bg-linear-to-r from-primary/50 to-transparent hidden sm:block" />
         )}

@@ -1,7 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  reactStrictMode: true,
+  poweredByHeader: false,
+  compress: true,
+  
+  experimental: {
+    optimizePackageImports: ['lucide-react'],
+  },
+
+  // Empty turbopack config to silence the warning
+  turbopack: {},
 };
 
 export default nextConfig;

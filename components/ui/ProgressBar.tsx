@@ -1,7 +1,5 @@
 'use client'
 
-import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
 import { cn } from '@/lib/utils'
 
 interface ProgressBarProps {
@@ -20,11 +18,8 @@ const levelLabel = (v: number) => {
 }
 
 export function ProgressBar({ label, value, showLevel = true, className, delay = 0 }: ProgressBarProps) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.5 })
-
   return (
-    <div ref={ref} className={cn('space-y-2', className)}>
+    <div className={cn('space-y-2 animate-fade-in', className)} style={{ animationDelay: `${delay}ms` }}>
       <div className="flex justify-between items-center">
         <span className="text-sm font-semibold text-foreground">{label}</span>
         {showLevel && (
@@ -32,18 +27,14 @@ export function ProgressBar({ label, value, showLevel = true, className, delay =
         )}
       </div>
       <div className="relative h-1.5 bg-wire overflow-hidden rounded-sm">
-        <motion.div
-          className="absolute inset-y-0 left-0 bg-primary shadow-[0_0_8px_rgba(255,45,85,0.6)]"
-          initial={{ width: 0 }}
-          animate={isInView ? { width: `${value}%` } : { width: 0 }}
-          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay }}
+        <div
+          className="absolute inset-y-0 left-0 bg-primary shadow-[0_0_8px_rgba(255,45,85,0.6)] animate-progress-fill"
+          style={{ '--progress-width': `${value}%`, animationDelay: `${delay}ms` } as React.CSSProperties}
         />
         {/* Shimmer */}
-        <motion.div
-          className="absolute inset-y-0 w-12 bg-linear-to-r from-transparent via-white/40 to-transparent"
-          initial={{ left: '-3rem' }}
-          animate={isInView ? { left: `calc(${value}% - 1.5rem)` } : { left: '-3rem' }}
-          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay }}
+        <div
+          className="absolute inset-y-0 w-12 bg-linear-to-r from-transparent via-white/40 to-transparent animate-progress-shimmer"
+          style={{ '--shimmer-end': `calc(${value}% - 1.5rem)`, animationDelay: `${delay}ms` } as React.CSSProperties}
         />
       </div>
     </div>
