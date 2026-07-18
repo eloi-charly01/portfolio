@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://eloi-charly01.github.io/portfolio/sitemap.xml',
+    sitemap: 'https://eloi-charly01.github.io/sitemap.xml',
   }
 }
