@@ -5,8 +5,8 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
   output: "export",
-  basePath: "/portfolio",
-  assetPrefix: "/portfolio/",
+  basePath: "/",
+  assetPrefix: "/",
   images: {
     unoptimized: true,
   },

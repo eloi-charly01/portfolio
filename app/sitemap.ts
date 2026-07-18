@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { PROJECTS } from '@/constants/data'
 export const dynamic = "force-static";
-const BASE_URL = "https://eloi-charly01.github.io/portfolio";
+const BASE_URL = "https://eloi-charly01.github.io";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const projectPages = PROJECTS.map((p) => ({
