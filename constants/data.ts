@@ -42,11 +42,11 @@ export const EXPERIENCES: Experience[] = [
     ],
   },
   {
-    id: 'dev-web-service',
+    id: 'venum-dragon-bleu',
     title: 'Développeur PHP Full Stack',
-    company: 'DEV WEB SERVICE',
+    company: 'VENUM',
     contract: 'CDI',
-    location: 'Ambatoroaka, Antananarivo',
+    location: 'Remote',
     period: 'Mai 2023 – Présent',
     current: true,
     summary:
@@ -55,7 +55,7 @@ export const EXPERIENCES: Experience[] = [
       { metric: '-20%', label: 'Temps de chargement via cache et optimisation SQL' },
       { metric: '100%', label: 'Fonctionnalités critiques couvertes par des tests PHPUnit' },
     ],
-    technologies: ['Symfony 6/7', 'Laravel 10/11', 'MySQL', 'PHPUnit', 'REST API', 'GraphQL', 'Redis'],
+    technologies: ['Symfony 6/7', 'Laravel 10/11', 'MySQL', 'PHPUnit', 'REST API', 'GraphQL', 'Magento', 'Shopify', 'Akeneo PIM'],
     responsibilities: [
       "Développement d'applications web métier avec Symfony et Laravel, de la conception à la mise en production",
       "Optimisation avancée des bases de données MySQL (indexation, query plan, stratégies de cache)",
