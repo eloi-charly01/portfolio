@@ -5,7 +5,7 @@ export function useTypewriter(texts: string[], speed = 100, pause = 2500) {
   const [textIndex, setTextIndex] = useState(0)
   const [charIndex, setCharIndex] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)
-  const rafRef = useRef<number>()
+  const rafRef = useRef<number | null>(null)
   const lastTimeRef = useRef<number>(0)
 
   useEffect(() => {
